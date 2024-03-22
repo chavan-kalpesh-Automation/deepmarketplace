@@ -17,12 +17,17 @@ public class TestBase {
 	public static Properties prop;
 	public static WebDriver driver;
 
-	public TestBase() {
+	public  TestBase() {
 		try {
 			prop = new Properties();
 			Path root = FileSystems.getDefault().getPath("").toAbsolutePath();
-			Path filePath = Paths.get(root.toString(), "src", "main", "java", "deepmarketplace", "confige",
+			
+//			D:\Installs__\gitproj\deepmarketplace\deepmarketplace
+//			D:\Installs__\gitproj\deepmarketplace\deepmarketplace\src\main\java\deepmarketplace\deepmarketplace\configue.properties
+
+			Path filePath = Paths.get(root.toString(), 
 					"configue.properties");
+//			System.out.println(filePath);
 			FileInputStream fis = new FileInputStream(filePath.toString());
 			prop.load(fis);
 
@@ -39,7 +44,7 @@ public class TestBase {
 
 		String fireFoxDriverPath = prop.getProperty("firefoxdriverpath");
 
-		if (browsername.equals("chrome")) {
+		if (browsername.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 
 			driver = new ChromeDriver();
@@ -55,4 +60,7 @@ public class TestBase {
 		driver.get(prop.getProperty("url"));
 
 	}
+//	public static void main(String []args) {
+//		TestBase();
+//	}
 }
