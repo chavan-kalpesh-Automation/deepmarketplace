@@ -6,7 +6,7 @@
       <class name="qa.deepmarketplace.test.LoginPageTest">
         <methods>
           <include name="setup"/>
-          <include name="homepageTitleTest"/>
+          <include name="logintodeepmarketplace"/>
         </methods>
       </class> <!-- qa.deepmarketplace.test.LoginPageTest -->
     </classes>

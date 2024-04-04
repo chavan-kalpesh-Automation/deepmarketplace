@@ -7,21 +7,21 @@ import org.openqa.selenium.support.PageFactory;
 import qa.deepmarketplace.base.TestBase;
 
 public class LoginPageClass extends TestBase {
-	
-	@FindBy(xpath="//input[@id='code']")
-	WebElement zipcode;
-	
-	@FindBy(xpath="//button[text()=' Proceed ']")
-	WebElement  proceedbtn;
+
+	@FindBy(xpath = "//input[@id='code']")
+	WebElement localzipcode;
+
+	@FindBy(xpath = "//button[text()=' Proceed ']")
+	WebElement proceedbtn;
 
 	@FindBy(xpath = "*//a[@class='login-btn']")
 	WebElement login;
 
 	@FindBy(xpath = "//input[@id='email']")
-	WebElement username;
+	WebElement useremail;
 
 	@FindBy(xpath = "//input[@id='password']")
-	WebElement password;
+	WebElement userpassword;
 
 	@FindBy(xpath = "//button[text()=' Log in ']")
 	WebElement loginbtn;
@@ -37,6 +37,24 @@ public class LoginPageClass extends TestBase {
 		PageFactory.initElements(driver, this);
 
 	}
-	// Page Actions :-
 
+	// Page Actions :-
+	public String loginPageTitle() {
+		return driver.getTitle();
+
+	}
+
+	public void validateZipcodeAnsProceed(String zipcode) {
+		localzipcode.sendKeys(zipcode);
+		proceedbtn.click();
+	}
+
+	public HomePageClass verifylogindeepmarketplace(String email, String password) {
+		loginbtn.click();
+		useremail.sendKeys(email);
+		userpassword.sendKeys(password);
+		loginbtn.click();
+		return new HomePageClass();
+
+	}
 }
