@@ -2,11 +2,19 @@ package qa.deepmarketplace.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
+import qa.deepmarketplace.base.Helper;
 import qa.deepmarketplace.base.TestBase;
 
 public class HomePageClass extends TestBase {
+	Helper help;
 
+	@FindBy(xpath = "//div[@class='modal-dialog modal-dialog-centered']//div//input[@id='code']")
+	WebElement zipcode_onEnterzipcodemodal;
+
+	@FindBy(xpath = "//div[@class='modal-dialog modal-dialog-centered']//div//button[text()=' Proceed ']")
+	WebElement proceedbtn_onEnterzipcodemodal;
 	@FindBy(xpath = "//header[@class='header']//div//div//div[@class='form-control zipcode-control']")
 	WebElement zipcode;
 
@@ -32,10 +40,10 @@ public class HomePageClass extends TestBase {
 	WebElement close_modalbtn;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//label//following-sibling::input[@id='email']")
-	WebElement enteremailadd;
+	WebElement enteremailadd_onmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//label//following-sibling::input[@id='password']")
-	WebElement enterpassword;
+	WebElement enterpassword_onmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//label//following-sibling::span[text()=' Forgot your password? ']")
 	WebElement forgotpasword_btn;
@@ -51,9 +59,30 @@ public class HomePageClass extends TestBase {
 
 	@FindBy(xpath = "//header[@class='header']//div//div//ul//li//a[@class='signup-btn']")
 	WebElement signup_btn;
-	
-	@FindBy(xpath="//div[@id='loginModal']//div//div//div[@class='modal-header']//div//h5[text()='Sign Up']")
+
+	@FindBy(xpath = "//div[@id='loginModal']//div//div//div[@class='modal-header']//div//h5[text()='Sign Up']")
 	WebElement signupheader_onsignupmodal;
+
+	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//div//label//following-sibling::input[@id='name']")
+	WebElement fullname_onsignupmodal;
+
+	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//div//label//following-sibling::input[@id='phone_no']")
+	WebElement phonenumber_onsignupmodal;
+
+	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//label//following-sibling::input[@id='password_confirmation']")
+	WebElement confirmpassword_onsignupmodal;
+
+	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//label//input[@type='checkbox']")
+	WebElement termsandconditioncheckbox_onsignupmodal;
+
+	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//button[text()=' Sign Up ']")
+	WebElement signupbutton_onsignupmodal;
+
+	@FindBy(xpath = "//div[@id='loginModal']//div//p[text()='Already have an account?']")
+	WebElement alreadyhaveanaccountFootertitle_onsignupmodal;
+
+	@FindBy(xpath = "//div[@id='loginModal']//div//span[text()='LOGIN']")
+	WebElement loginbtn_onsignupmodal;
 
 	@FindBy(xpath = "//header[@class='header']//a[@class='dropdown user-box']//span")
 	WebElement profile_btn; // for getting profile name and profile button also
@@ -72,5 +101,49 @@ public class HomePageClass extends TestBase {
 
 	@FindBy(xpath = "//footer[@class='container pt-4 py-2']//div//div//ul//li//a[text()='Contact']")
 	WebElement contactUs_btn;
+
+	// initialization of web element using pagefactory
+	public HomePageClass() {
+		PageFactory.initElements(driver, this);
+	}
+
+	// Page Actions
+
+	public void validateZipcode(String zip) {
+		 help = new Helper();
+		help.explicitWaitOnVisibility_Custom(driver, zipcode_onEnterzipcodemodal, 10);
+		zipcode_onEnterzipcodemodal.sendKeys(zip);
+		help.explicitWaitOnVisibility_Custom(driver, proceedbtn_onEnterzipcodemodal, 10);
+		proceedbtn_onEnterzipcodemodal.click();
+
+	}
+
+	public HomePageClass validate_loginform(String email, String password) {
+		 help = new Helper();
+
+		help.explicitWaitOnVisibility_Custom(driver, loginbtn, 10);
+		loginbtn.click();
+		enteremailadd_onmodal.sendKeys(email);
+		enterpassword_onmodal.sendKeys(password);
+		signupbtn_onloginmodal.click();
+		return new HomePageClass();
+
+	}
+
+	public void validate_Signupform(String fullname, String mobno, String password, String confirmpassword) {
+		signup_btn.click();
+		fullname_onsignupmodal.sendKeys(fullname);
+		phonenumber_onsignupmodal.sendKeys(mobno);
+		enterpassword_onmodal.sendKeys(password);
+		confirmpassword_onsignupmodal.sendKeys(confirmpassword);
+		termsandconditioncheckbox_onsignupmodal.click();
+		signupbutton_onsignupmodal.click();
+
+	}
+
+	public String validateHomePageTitle() {
+		return driver.getTitle();
+
+	}
 
 }
