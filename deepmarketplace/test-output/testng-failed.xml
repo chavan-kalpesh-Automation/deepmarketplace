@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="qa.deepmarketplace.test.LoginPageTest">
+      <class name="qa.deepmarketplace.test.HomePageTest">
         <methods>
+          <include name="signUpTest"/>
           <include name="setup"/>
-          <include name="logintodeepmarketplace"/>
         </methods>
-      </class> <!-- qa.deepmarketplace.test.LoginPageTest -->
+      </class> <!-- qa.deepmarketplace.test.HomePageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

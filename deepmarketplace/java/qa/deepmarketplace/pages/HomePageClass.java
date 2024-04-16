@@ -1,6 +1,8 @@
 package qa.deepmarketplace.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -103,6 +105,7 @@ public class HomePageClass extends TestBase {
 	WebElement contactUs_btn;
 
 	// initialization of web element using pagefactory
+	
 	public HomePageClass() {
 		PageFactory.initElements(driver, this);
 	}
@@ -110,7 +113,7 @@ public class HomePageClass extends TestBase {
 	// Page Actions
 
 	public void validateZipcode(String zip) {
-		 help = new Helper();
+		help = new Helper();
 		help.explicitWaitOnVisibility_Custom(driver, zipcode_onEnterzipcodemodal, 10);
 		zipcode_onEnterzipcodemodal.sendKeys(zip);
 		help.explicitWaitOnVisibility_Custom(driver, proceedbtn_onEnterzipcodemodal, 10);
@@ -119,24 +122,40 @@ public class HomePageClass extends TestBase {
 	}
 
 	public HomePageClass validate_loginform(String email, String password) {
-		 help = new Helper();
+		help = new Helper();
+		help.explicitWaitOnVisibility_Custom(driver, loginbtn, 20);
 
-		help.explicitWaitOnVisibility_Custom(driver, loginbtn, 10);
-		loginbtn.click();
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", loginbtn);
+
+		help.explicitWaitOnVisibility_Custom(driver, enteremailadd_onmodal, 10);
 		enteremailadd_onmodal.sendKeys(email);
 		enterpassword_onmodal.sendKeys(password);
-		signupbtn_onloginmodal.click();
+		help.explicitWaitOnVisibility_Custom(driver, loginbtn_onmodal, 10);
+
+		loginbtn_onmodal.click();
 		return new HomePageClass();
 
 	}
 
-	public void validate_Signupform(String fullname, String mobno, String password, String confirmpassword) {
-		signup_btn.click();
+	public void validate_Signupform(String fullname, String mobno, String email, String password,
+			String confirmpassword) {
+
+		help = new Helper();
+		help.explicitWaitOnVisibility_Custom(driver, signup_btn, 20);
+
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", signup_btn);
+		help.explicitWaitOnVisibility_Custom(driver, fullname_onsignupmodal, 10);
 		fullname_onsignupmodal.sendKeys(fullname);
 		phonenumber_onsignupmodal.sendKeys(mobno);
+		enteremailadd_onmodal.sendKeys(email);
 		enterpassword_onmodal.sendKeys(password);
 		confirmpassword_onsignupmodal.sendKeys(confirmpassword);
+
 		termsandconditioncheckbox_onsignupmodal.click();
+
+		help.explicaitWaitElementTobeClickable(driver, signupbutton_onsignupmodal, 10);
 		signupbutton_onsignupmodal.click();
 
 	}
@@ -145,5 +164,6 @@ public class HomePageClass extends TestBase {
 		return driver.getTitle();
 
 	}
+
 
 }

@@ -34,5 +34,10 @@ public class HomePageTest extends TestBase {
 		homepage.validate_loginform(prop.getProperty("email"), prop.getProperty("password"));
 
 	}
+	@Test
+	public void signUpTest() {
+		homepage.validate_Signupform(prop.getProperty("fullname"), prop.getProperty("mobilenumber"),prop.getProperty("signupEmail"), prop.getProperty("signupPassword"), prop.getProperty("signupConfirmPassword"));
+	}
+	
 
 }

@@ -19,6 +19,15 @@ public class Helper extends TestBase {
 		}
 	}
 
+	public void explicaitWaitElementTobeClickable(WebDriver driver, WebElement element, int timeout) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	public void actions_ClassMethods(WebElement triggerElement, WebElement targetElement) {
 		Actions act = new Actions(driver);
 		act.moveToElement(triggerElement).perform();
