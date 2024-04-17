@@ -1,5 +1,8 @@
 package qa.deepmarketplace.pages;
 
+import java.util.List;
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -104,8 +107,11 @@ public class HomePageClass extends TestBase {
 	@FindBy(xpath = "//footer[@class='container pt-4 py-2']//div//div//ul//li//a[text()='Contact']")
 	WebElement contactUs_btn;
 
+	@FindBy(xpath = "//div//div//div//a//div[@class='storeInfo']//h4")
+	List<WebElement> storenearyou_Lists;
+
 	// initialization of web element using pagefactory
-	
+
 	public HomePageClass() {
 		PageFactory.initElements(driver, this);
 	}
@@ -121,10 +127,14 @@ public class HomePageClass extends TestBase {
 
 	}
 
+	public String validateHomePageTitle() {
+		return driver.getTitle();
+
+	}
+
 	public HomePageClass validate_loginform(String email, String password) {
 		help = new Helper();
 		help.explicitWaitOnVisibility_Custom(driver, loginbtn, 20);
-
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", loginbtn);
 
@@ -160,10 +170,31 @@ public class HomePageClass extends TestBase {
 
 	}
 
-	public String validateHomePageTitle() {
-		return driver.getTitle();
+	public void validate_SelectStore(String sotrename) {
+		WebElement storeName = findsotrenameByName(sotrename);
+		help = new Helper();
 
+		help.explicitWaitOnVisibility_Custom(driver, storeName, 10);
+		help.explicaitWaitElementTobeClickable(driver, storeName, 10);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", storeName);
 	}
 
+	private WebElement findsotrenameByName(String sotrename) {
+		help = new Helper();
 
+		help.explicitWaitOnVisibility_Custom(driver, storenearyou_btn, 10);
+		for (WebElement store : storenearyou_Lists) {
+			String text = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].textContent;",
+					store);
+//			System.out.println(text + "Passed");
+//			if (store.getText().equalsIgnoreCase(sotrename)) {
+			if (text.equalsIgnoreCase(sotrename)) {
+				return store;
+			}
+
+		}
+		throw new NoSuchElementException("Store Name " + sotrename + " Not Found!!");
+
+	}
 }

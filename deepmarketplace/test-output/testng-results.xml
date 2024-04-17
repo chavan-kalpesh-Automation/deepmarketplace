@@ -2,19 +2,19 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-04-16T17:39:02 IST" name="Default suite" finished-at="2024-04-16T17:39:17 IST" duration-ms="15642">
+  <suite started-at="2024-04-17T19:43:18 IST" name="Default suite" finished-at="2024-04-17T19:43:33 IST" duration-ms="14652">
     <groups>
     </groups>
-    <test started-at="2024-04-16T17:39:02 IST" name="Default test" finished-at="2024-04-16T17:39:17 IST" duration-ms="15642">
+    <test started-at="2024-04-17T19:43:18 IST" name="Default test" finished-at="2024-04-17T19:43:33 IST" duration-ms="14652">
       <class name="qa.deepmarketplace.test.HomePageTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:qa.deepmarketplace.test.HomePageTest@f09733f]" started-at="2024-04-16T17:39:02 IST" name="setup" finished-at="2024-04-16T17:39:15 IST" duration-ms="12682" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:qa.deepmarketplace.test.HomePageTest@2794eab6]" started-at="2024-04-17T19:43:18 IST" name="setup" finished-at="2024-04-17T19:43:32 IST" duration-ms="14421" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="signUpTest()[pri:0, instance:qa.deepmarketplace.test.HomePageTest@f09733f]" started-at="2024-04-16T17:39:15 IST" name="signUpTest" finished-at="2024-04-16T17:39:17 IST" duration-ms="2890" status="PASS">
+        <test-method signature="selectStoreTest()[pri:0, instance:qa.deepmarketplace.test.HomePageTest@2794eab6]" started-at="2024-04-17T19:43:32 IST" name="selectStoreTest" finished-at="2024-04-17T19:43:33 IST" duration-ms="161" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- signUpTest -->
+        </test-method> <!-- selectStoreTest -->
       </class> <!-- qa.deepmarketplace.test.HomePageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

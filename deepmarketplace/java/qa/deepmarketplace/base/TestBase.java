@@ -45,12 +45,13 @@ public class TestBase {
 		String fireFoxDriverPath = prop.getProperty("firefoxdriverpath");
 
 		if (browsername.equalsIgnoreCase("chrome")) {
-			WebDriverManager.chromedriver().setup();
+			WebDriverManager.chromedriver().clearDriverCache().setup();
+//			WebDriverManager.chromedriver().setup();
 
 			driver = new ChromeDriver();
 
 		} else if (browsername.equals("firefox")) {
-			System.setProperty("webdriver.gecko.driver", fireFoxDriverPath);
+			WebDriverManager.firefoxdriver().clearDriverCache().setup();
 			driver = new ChromeDriver();
 
 		}

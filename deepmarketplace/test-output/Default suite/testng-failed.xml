@@ -5,7 +5,7 @@
     <classes>
       <class name="qa.deepmarketplace.test.HomePageTest">
         <methods>
-          <include name="signUpTest"/>
+          <include name="selectStoreTest"/>
           <include name="setup"/>
         </methods>
       </class> <!-- qa.deepmarketplace.test.HomePageTest -->
