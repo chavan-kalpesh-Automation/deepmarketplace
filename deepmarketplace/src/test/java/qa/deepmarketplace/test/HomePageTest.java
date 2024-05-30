@@ -1,6 +1,5 @@
 package qa.deepmarketplace.test;
 
-import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -43,8 +42,11 @@ public class HomePageTest extends TestBase {
 	}
 	@Test
 	public  void selectStoreTest() {
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		homepage.validate_SelectStore(prop.getProperty("storename"));
+	}
+	@Test
+	public void goToStore() {
+		homepage.validateGoToStore(prop.getProperty("storename"));
 	}
 	
 

@@ -3,9 +3,9 @@ package qa.deepmarketplace.pages;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -17,6 +17,9 @@ public class HomePageClass extends TestBase {
 
 	@FindBy(xpath = "//div[@class='modal-dialog modal-dialog-centered']//div//input[@id='code']")
 	WebElement zipcode_onEnterzipcodemodal;
+
+	@FindBy(xpath = "//div[@id='myModal']//div//div//button[@class='btn-close']")
+	WebElement zipcodeclosebtn_onzipcodeModal;
 
 	@FindBy(xpath = "//div[@class='modal-dialog modal-dialog-centered']//div//button[text()=' Proceed ']")
 	WebElement proceedbtn_onEnterzipcodemodal;
@@ -107,9 +110,14 @@ public class HomePageClass extends TestBase {
 	@FindBy(xpath = "//footer[@class='container pt-4 py-2']//div//div//ul//li//a[text()='Contact']")
 	WebElement contactUs_btn;
 
-	@FindBy(xpath = "//div//div//div//a//div[@class='storeInfo']//h4")
+	@FindBy(xpath = "//div//div//a//div[@class='storeInfo']//h4")
 	List<WebElement> storenearyou_Lists;
 
+	String storename;
+	String dynamicStoreName = "//div//div//a//div//h4[contains(text(),'" + storename + "')]";
+
+//@FindBy(xpath="//div[@class='top-category-list']//h4[text()='${dynamicStoreName}']")
+//WebElement dy;
 	// initialization of web element using pagefactory
 
 	public HomePageClass() {
@@ -122,6 +130,7 @@ public class HomePageClass extends TestBase {
 		help = new Helper();
 		help.explicitWaitOnVisibility_Custom(driver, zipcode_onEnterzipcodemodal, 10);
 		zipcode_onEnterzipcodemodal.sendKeys(zip);
+
 		help.explicitWaitOnVisibility_Custom(driver, proceedbtn_onEnterzipcodemodal, 10);
 		proceedbtn_onEnterzipcodemodal.click();
 
@@ -165,36 +174,53 @@ public class HomePageClass extends TestBase {
 
 		termsandconditioncheckbox_onsignupmodal.click();
 
-		help.explicaitWaitElementTobeClickable(driver, signupbutton_onsignupmodal, 10);
-		signupbutton_onsignupmodal.click();
-
 	}
 
-	public void validate_SelectStore(String sotrename) {
-		WebElement storeName = findsotrenameByName(sotrename);
+	public StorePageClass validate_SelectStore(String dynamicStoreName) {
 		help = new Helper();
 
-		help.explicitWaitOnVisibility_Custom(driver, storeName, 10);
-		help.explicaitWaitElementTobeClickable(driver, storeName, 10);
+		WebElement dy = driver
+				.findElement(By.xpath("//div[@class='top-category-list']//h4[text()='"+dynamicStoreName+"']"));
+		System.out.println(dy);
+
+		help.explicaitWaitElementTobeClickable(driver, dy, 30);
+		System.out.println("test okay");
+
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();", storeName);
+		executor.executeScript("arguments[0].click();", dy);
+		driver.navigate().refresh();
+		help.explicitWaitOnVisibility_Custom(driver, zipcodeclosebtn_onzipcodeModal, 10);
+
+		zipcodeclosebtn_onzipcodeModal.click();
+
+		return new StorePageClass();
 	}
 
-	private WebElement findsotrenameByName(String sotrename) {
+	private WebElement findsotrenameByName(String dynamicStoreName) {
 		help = new Helper();
 
 		help.explicitWaitOnVisibility_Custom(driver, storenearyou_btn, 10);
 		for (WebElement store : storenearyou_Lists) {
 			String text = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].textContent;",
 					store);
-//			System.out.println(text + "Passed");
-//			if (store.getText().equalsIgnoreCase(sotrename)) {
-			if (text.equalsIgnoreCase(sotrename)) {
+			if (text.equalsIgnoreCase(dynamicStoreName)) {
 				return store;
 			}
 
 		}
-		throw new NoSuchElementException("Store Name " + sotrename + " Not Found!!");
+
+		throw new NoSuchElementException("Store Name " + dynamicStoreName + " Not Found!!");
 
 	}
+
+	public void validateGoToStore(String dynamicStoreName) {
+		help.explicitWaitOnVisibility_Custom(driver, zipcode, 10);
+//		System.out.println(zipcode.getText());
+		System.out.println(dynamicStoreName);
+
+		WebElement dy = driver.findElement(By.xpath(dynamicStoreName));
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", dy);
+	}
+
 }
