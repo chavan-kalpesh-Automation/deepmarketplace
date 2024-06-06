@@ -16,102 +16,102 @@ public class HomePageClass extends TestBase {
 	Helper help;
 
 	@FindBy(xpath = "//div[@class='modal-dialog modal-dialog-centered']//div//input[@id='code']")
-	WebElement zipcode_onEnterzipcodemodal;
+	private WebElement zipcode_onEnterzipcodemodal;
 
 	@FindBy(xpath = "//div[@id='myModal']//div//div//button[@class='btn-close']")
-	WebElement zipcodeclosebtn_onzipcodeModal;
+	private WebElement zipcodeclosebtn_onzipcodeModal;
 
 	@FindBy(xpath = "//div[@class='modal-dialog modal-dialog-centered']//div//button[text()=' Proceed ']")
-	WebElement proceedbtn_onEnterzipcodemodal;
+	private WebElement proceedbtn_onEnterzipcodemodal;
 	@FindBy(xpath = "//header[@class='header']//div//div//div[@class='form-control zipcode-control']")
-	WebElement zipcode;
+	private WebElement zipcode;
 
 	@FindBy(xpath = "//div[@class='input-group search-box']//input[@id='search']")
-	WebElement searchstore;
+	private WebElement searchstore;
 
 	@FindBy(xpath = "//div[@class='input-group search-box']//button")
-	WebElement searchbtn;
+	private WebElement searchbtn;
 
 	@FindBy(xpath = "//a[@class='d-block mb-2 deep-logo mb-lg-0 ms-md-0']")
-	WebElement deeplogo;
+	private WebElement deeplogo;
 
 	@FindBy(xpath = "//header[@class='header']//button[@class='menu-btn']")
-	WebElement leftside_moremenu;
+	private WebElement leftside_moremenu;
 
 	@FindBy(xpath = "//header[@class='header']//div//div//ul//li//a[@class='login-btn']")
-	WebElement loginbtn;
+	private WebElement loginbtn;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div[@class='modal-header']//div//h5[text()='Login']")
-	WebElement loginmodal_header;
+	private WebElement loginmodal_header;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//button[@class='btn-close']")
-	WebElement close_modalbtn;
+	private WebElement close_modalbtn;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//label//following-sibling::input[@id='email']")
-	WebElement enteremailadd_onmodal;
+	private WebElement enteremailadd_onmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//label//following-sibling::input[@id='password']")
-	WebElement enterpassword_onmodal;
+	private WebElement enterpassword_onmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//label//following-sibling::span[text()=' Forgot your password? ']")
-	WebElement forgotpasword_btn;
+	private WebElement forgotpasword_btn;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//p//following-sibling::span[@class='footer-button cursor-pointer']")
-	WebElement signupbtn_onloginmodal;
+	private WebElement signupbtn_onloginmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//a[text()='login as vendor']")
-	WebElement loginasvendorbtn_onloginmodal;
+	private WebElement loginasvendorbtn_onloginmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//button[text()=' Log in ']")
-	WebElement loginbtn_onmodal;
+	private WebElement loginbtn_onmodal;
 
 	@FindBy(xpath = "//header[@class='header']//div//div//ul//li//a[@class='signup-btn']")
-	WebElement signup_btn;
+	private WebElement signup_btn;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div[@class='modal-header']//div//h5[text()='Sign Up']")
-	WebElement signupheader_onsignupmodal;
+	private WebElement signupheader_onsignupmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//div//label//following-sibling::input[@id='name']")
-	WebElement fullname_onsignupmodal;
+	private WebElement fullname_onsignupmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//div//label//following-sibling::input[@id='phone_no']")
-	WebElement phonenumber_onsignupmodal;
+	private WebElement phonenumber_onsignupmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//label//following-sibling::input[@id='password_confirmation']")
-	WebElement confirmpassword_onsignupmodal;
+	private WebElement confirmpassword_onsignupmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//label//input[@type='checkbox']")
-	WebElement termsandconditioncheckbox_onsignupmodal;
+	private WebElement termsandconditioncheckbox_onsignupmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//div//div//div//div//form//div//button[text()=' Sign Up ']")
-	WebElement signupbutton_onsignupmodal;
+	private WebElement signupbutton_onsignupmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//p[text()='Already have an account?']")
-	WebElement alreadyhaveanaccountFootertitle_onsignupmodal;
+	private WebElement alreadyhaveanaccountFootertitle_onsignupmodal;
 
 	@FindBy(xpath = "//div[@id='loginModal']//div//span[text()='LOGIN']")
-	WebElement loginbtn_onsignupmodal;
+	private WebElement loginbtn_onsignupmodal;
 
 	@FindBy(xpath = "//header[@class='header']//a[@class='dropdown user-box']//span")
-	WebElement profile_btn; // for getting profile name and profile button also
+	private WebElement profile_btn; // for getting profile name and profile button also
 
 	@FindBy(xpath = "//div[@id='main-div']//main//div[@class='top-category-list']//div//div//h3[text()='Our Featured Stores']")
-	WebElement outFeaturedstore_txt;
+	private WebElement outFeaturedstore_txt;
 
 	@FindBy(xpath = "//div[@id='main-div']//main//div[@class='top-store-list']//div//div//h3[text()='Stores near you']")
-	WebElement storenearyou_btn;
+	private WebElement storenearyou_btn;
 
 	@FindBy(xpath = "//div[@id='main-div']//main//div[@class='top-store-list']//div//div//span[text()=' View All ']")
-	WebElement storenearyou_viewAllbtn;
+	private WebElement storenearyou_viewAllbtn;
 
 	@FindBy(xpath = "//footer[@class='container pt-4 py-2']//div//div//ul//li//a[text()='Become a Vendor']")
-	WebElement becomeaVendorbtn;
+	private WebElement becomeaVendorbtn;
 
 	@FindBy(xpath = "//footer[@class='container pt-4 py-2']//div//div//ul//li//a[text()='Contact']")
-	WebElement contactUs_btn;
+	private WebElement contactUs_btn;
 
 	@FindBy(xpath = "//div//div//a//div[@class='storeInfo']//h4")
-	List<WebElement> storenearyou_Lists;
+	private List<WebElement> storenearyou_Lists;
 
 	String storename;
 	String dynamicStoreName = "//div//div//a//div//h4[contains(text(),'" + storename + "')]";

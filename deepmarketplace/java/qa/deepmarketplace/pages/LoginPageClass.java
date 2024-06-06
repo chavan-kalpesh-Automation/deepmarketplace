@@ -9,28 +9,28 @@ import qa.deepmarketplace.base.TestBase;
 public class LoginPageClass extends TestBase {
 
 	@FindBy(xpath = "//input[@id='code']")
-	WebElement localzipcode;
+	private WebElement localzipcode;
 
 	@FindBy(xpath = "//button[text()=' Proceed ']")
-	WebElement proceedbtn;
+	private WebElement proceedbtn;
 
 	@FindBy(xpath = "*//a[@class='login-btn']")
-	WebElement login;
+	private WebElement login;
 
 	@FindBy(xpath = "//input[@id='email']")
-	WebElement useremail;
+	private WebElement useremail;
 
 	@FindBy(xpath = "//input[@id='password']")
-	WebElement userpassword;
+	private WebElement userpassword;
 
 	@FindBy(xpath = "//button[text()=' Log in ']")
-	WebElement loginbtn;
+	private WebElement loginbtn;
 
 	@FindBy(xpath = "//a[text()='login as a vendor']")
-	WebElement loginasvendor;
+	private WebElement loginasvendor;
 
 	@FindBy(xpath = "//span[text()='SIGN UP']")
-	WebElement signupbtn;
+	private WebElement signupbtn;
 
 	// Initializing the page objects
 	public LoginPageClass() {
