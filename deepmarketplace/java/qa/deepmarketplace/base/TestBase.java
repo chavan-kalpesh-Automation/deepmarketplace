@@ -14,19 +14,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
-	public static Properties prop;
-	public static WebDriver driver;
+	protected static Properties prop;
+	protected static WebDriver driver;
 
-	public  TestBase() {
+	protected TestBase() {
 		try {
 			prop = new Properties();
 			Path root = FileSystems.getDefault().getPath("").toAbsolutePath();
-			
+
 //			D:\Installs__\gitproj\deepmarketplace\deepmarketplace
 //			D:\Installs__\gitproj\deepmarketplace\deepmarketplace\src\main\java\deepmarketplace\deepmarketplace\configue.properties
 
-			Path filePath = Paths.get(root.toString(), 
-					"configue.properties");
+			Path filePath = Paths.get(root.toString(), "configue.properties");
 //			System.out.println(filePath);
 			FileInputStream fis = new FileInputStream(filePath.toString());
 			prop.load(fis);
@@ -39,7 +38,7 @@ public class TestBase {
 		}
 	}
 
-	public static void initialisation() {
+	protected static void initialisation() {
 		String browsername = prop.getProperty("browser");
 
 		String fireFoxDriverPath = prop.getProperty("firefoxdriverpath");
@@ -61,7 +60,5 @@ public class TestBase {
 		driver.get(prop.getProperty("url"));
 
 	}
-//	public static void main(String []args) {
-//		TestBase();
-//	}
+
 }

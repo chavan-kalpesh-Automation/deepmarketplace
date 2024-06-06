@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import qa.deepmarketplace.base.Helper;
 import qa.deepmarketplace.base.TestBase;
 
-public class HomePageClass extends TestBase {
+public  class HomePageClass extends TestBase {
 	Helper help;
 
 	@FindBy(xpath = "//div[@class='modal-dialog modal-dialog-centered']//div//input[@id='code']")
@@ -118,9 +118,10 @@ public class HomePageClass extends TestBase {
 
 //@FindBy(xpath="//div[@class='top-category-list']//h4[text()='${dynamicStoreName}']")
 //WebElement dy;
+	
 	// initialization of web element using pagefactory
 
-	public HomePageClass() {
+	public  HomePageClass() {
 		PageFactory.initElements(driver, this);
 	}
 
@@ -180,7 +181,7 @@ public class HomePageClass extends TestBase {
 		help = new Helper();
 
 		WebElement dy = driver
-				.findElement(By.xpath("//div[@class='top-category-list']//h4[text()='"+dynamicStoreName+"']"));
+				.findElement(By.xpath("//div[@class='top-category-list']//h4[text()='" + dynamicStoreName + "']"));
 		System.out.println(dy);
 
 		help.explicaitWaitElementTobeClickable(driver, dy, 30);
