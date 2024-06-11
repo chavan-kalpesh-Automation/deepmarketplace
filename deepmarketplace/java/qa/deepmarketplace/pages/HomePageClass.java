@@ -6,13 +6,14 @@ import java.util.NoSuchElementException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import qa.deepmarketplace.base.Helper;
 import qa.deepmarketplace.base.TestBase;
 
-public  class HomePageClass extends TestBase {
+public class HomePageClass extends TestBase {
 	Helper help;
 
 	@FindBy(xpath = "//div[@class='modal-dialog modal-dialog-centered']//div//input[@id='code']")
@@ -113,15 +114,9 @@ public  class HomePageClass extends TestBase {
 	@FindBy(xpath = "//div//div//a//div[@class='storeInfo']//h4")
 	private List<WebElement> storenearyou_Lists;
 
-	String storename;
-	String dynamicStoreName = "//div//div//a//div//h4[contains(text(),'" + storename + "')]";
-
-//@FindBy(xpath="//div[@class='top-category-list']//h4[text()='${dynamicStoreName}']")
-//WebElement dy;
-	
 	// initialization of web element using pagefactory
 
-	public  HomePageClass() {
+	public HomePageClass() {
 		PageFactory.initElements(driver, this);
 	}
 
@@ -197,7 +192,7 @@ public  class HomePageClass extends TestBase {
 		return new StorePageClass();
 	}
 
-	private WebElement findsotrenameByName(String dynamicStoreName) {
+	public WebElement findsotrenameByName(String dynamicStoreName) {
 		help = new Helper();
 
 		help.explicitWaitOnVisibility_Custom(driver, storenearyou_btn, 10);
@@ -224,4 +219,16 @@ public  class HomePageClass extends TestBase {
 		executor.executeScript("arguments[0].click();", dy);
 	}
 
+	public void validateSearchstoreByName(String storename) {
+
+//		help.explicitWaitOnVisibility_Custom(driver, searchbtn, 10);
+//		help.explicaitWaitElementTobeClickable(driver, searchbtn, 10);
+
+		System.out.println(storename);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(searchstore).click().sendKeys(storename).perform();
+
+		actions.click(searchbtn).build().perform();
+		System.out.println("Done");
+	}
 }

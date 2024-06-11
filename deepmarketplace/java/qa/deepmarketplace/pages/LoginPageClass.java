@@ -39,17 +39,17 @@ public class LoginPageClass extends TestBase {
 	}
 
 	// Page Actions :-
-	public String loginPageTitle() {
+	public  String loginPageTitle() {
 		return driver.getTitle();
 
 	}
 
-	public void validateZipcodeAnsProceed(String zipcode) {
+	public  void validateZipcodeAnsProceed(String zipcode) {
 		localzipcode.sendKeys(zipcode);
 		proceedbtn.click();
 	}
 
-	public HomePageClass verifylogindeepmarketplace(String email, String password) {
+	public  HomePageClass verifylogindeepmarketplace(String email, String password) {
 		loginbtn.click();
 		useremail.sendKeys(email);
 		userpassword.sendKeys(password);

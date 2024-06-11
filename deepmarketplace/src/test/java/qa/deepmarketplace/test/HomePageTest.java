@@ -49,5 +49,10 @@ public class HomePageTest extends TestBase {
 		homepage.validateGoToStore(prop.getProperty("storename"));
 	}
 	
+	//This is new method which is search store by name 
+	@Test
+	public void searchStoreByNameTest() {
+		homepage.validateSearchstoreByName(prop.getProperty("storename"));
+	}
 
 }
