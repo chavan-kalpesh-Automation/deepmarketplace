@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-11T17:51:01 IST" name="Default suite" finished-at="2024-06-11T17:51:18 IST" duration-ms="17382">
+  <suite started-at="2024-06-13T19:08:57 IST" name="Default suite" finished-at="2024-06-13T19:09:22 IST" duration-ms="24836">
     <groups>
     </groups>
-    <test started-at="2024-06-11T17:51:01 IST" name="Default test" finished-at="2024-06-11T17:51:18 IST" duration-ms="17382">
+    <test started-at="2024-06-13T19:08:57 IST" name="Default test" finished-at="2024-06-13T19:09:22 IST" duration-ms="24836">
       <class name="qa.deepmarketplace.test.HomePageTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:qa.deepmarketplace.test.HomePageTest@6340e5f0]" started-at="2024-06-11T17:51:01 IST" name="setup" finished-at="2024-06-11T17:51:17 IST" duration-ms="16487" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:qa.deepmarketplace.test.HomePageTest@6340e5f0]" started-at="2024-06-13T19:08:57 IST" name="setup" finished-at="2024-06-13T19:09:21 IST" duration-ms="24129" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="searchStoreByNameTest()[pri:0, instance:qa.deepmarketplace.test.HomePageTest@6340e5f0]" started-at="2024-06-11T17:51:17 IST" name="searchStoreByNameTest" finished-at="2024-06-11T17:51:18 IST" duration-ms="819" status="PASS">
+        <test-method signature="searchStoreByNameTest()[pri:0, instance:qa.deepmarketplace.test.HomePageTest@6340e5f0]" started-at="2024-06-13T19:09:21 IST" name="searchStoreByNameTest" finished-at="2024-06-13T19:09:22 IST" duration-ms="648" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchStoreByNameTest -->

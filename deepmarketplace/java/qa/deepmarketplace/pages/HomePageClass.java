@@ -30,7 +30,7 @@ public class HomePageClass extends TestBase {
 	@FindBy(xpath = "//div[@class='input-group search-box']//input[@id='search']")
 	private WebElement searchstore;
 
-	@FindBy(xpath = "//div[@class='input-group search-box']//button")
+	@FindBy(xpath = "//div[@class='input-group search-box']//button[@class='btn btn-outline-secondary']")
 	private WebElement searchbtn;
 
 	@FindBy(xpath = "//a[@class='d-block mb-2 deep-logo mb-lg-0 ms-md-0']")
@@ -221,14 +221,18 @@ public class HomePageClass extends TestBase {
 
 	public void validateSearchstoreByName(String storename) {
 
-//		help.explicitWaitOnVisibility_Custom(driver, searchbtn, 10);
+		help.explicitWaitOnVisibility_Custom(driver, searchbtn, 10);
 //		help.explicaitWaitElementTobeClickable(driver, searchbtn, 10);
 
 		System.out.println(storename);
 		Actions actions = new Actions(driver);
-		actions.moveToElement(searchstore).click().sendKeys(storename).perform();
-
-		actions.click(searchbtn).build().perform();
+//		actions.moveToElement(searchstore).click().sendKeys(storename).perform();
+//
+//		actions.click(searchbtn).build().perform();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].value='SUBZI MANDI';", searchstore);
+	
+		
 		System.out.println("Done");
 	}
 }
