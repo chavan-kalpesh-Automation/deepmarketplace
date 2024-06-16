@@ -2,8 +2,10 @@ package qa.deepmarketplace.pages;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -129,7 +131,6 @@ public class HomePageClass extends TestBase {
 
 		help.explicitWaitOnVisibility_Custom(driver, proceedbtn_onEnterzipcodemodal, 10);
 		proceedbtn_onEnterzipcodemodal.click();
-
 	}
 
 	public String validateHomePageTitle() {
@@ -218,21 +219,29 @@ public class HomePageClass extends TestBase {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", dy);
 	}
-
+//Pass
 	public void validateSearchstoreByName(String storename) {
 
-		help.explicitWaitOnVisibility_Custom(driver, searchbtn, 10);
-//		help.explicaitWaitElementTobeClickable(driver, searchbtn, 10);
+		help.explicitWaitOnVisibility_Custom(driver, searchstore, 30);
+		help.explicaitWaitElementTobeClickable(driver, searchstore, 30);
+		help.explicWaitOnVisibilityOfElementLocated(driver, searchstore, 30);
 
-		System.out.println(storename);
-		Actions actions = new Actions(driver);
-//		actions.moveToElement(searchstore).click().sendKeys(storename).perform();
-//
-//		actions.click(searchbtn).build().perform();
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("arguments[0].value='SUBZI MANDI';", searchstore);
-	
-		
-		System.out.println("Done");
+		try {
+			searchstore.click();
+			searchstore.sendKeys("aaojee");
+
+		} catch (ElementNotInteractableException e) {
+
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", searchstore);
+		}
+		searchstore.sendKeys("aaojee");
+
+		help.explicWaitTextToBePresentInElement(searchbtn, storename, 5);
+		Actions act = new Actions(driver);
+		act.click(searchbtn);
+
+		help.explicaitWaitElementTobeClickable(driver, searchbtn, 20);
+
+		searchbtn.click();
 	}
 }

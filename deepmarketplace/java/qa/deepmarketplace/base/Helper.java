@@ -2,6 +2,7 @@ package qa.deepmarketplace.base;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -24,6 +25,26 @@ public class Helper extends TestBase {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void explicWaitOnVisibilityOfElementLocated(WebDriver driver, WebElement element, int timeout) {
+		try {
+			WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeout));
+			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy((By) element));
+			
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	public void explicWaitTextToBePresentInElement( WebElement element, String value,int timeout) {
+		try {
+			WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeout));
+			wait.until(ExpectedConditions.textToBePresentInElement(element, value));
+		}
+					catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
